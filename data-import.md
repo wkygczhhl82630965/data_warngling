@@ -37,5 +37,4 @@ pups_data = read_csv(file = "./data/FAS_pups.csv")
 
 ``` r
 pups_data = janitor::clean_names(pups_data)
-view(pups_data)
 ```
