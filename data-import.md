@@ -39,7 +39,7 @@ litters_data2 = read_csv(
 ``` r
 ### converting name from capital letters into lower case 
 litters_data = janitor::clean_names(litters_data1)
-pups_data = read_csv(file = "./data/FAS_pups.csv")
+pups_data1 = read_csv(file = "./data/FAS_pups.csv")
 ```
 
     ## Parsed with column specification:
@@ -53,14 +53,10 @@ pups_data = read_csv(file = "./data/FAS_pups.csv")
     ## )
 
 ``` r
-pups_data = janitor::clean_names(pups_data)
-```
-
-``` r
 ##play with column names
-litters_data3 = read_csv(file = "./data/FAS_litters.csv",
+litters_data5 = read_csv(file = "./data/FAS_litters.csv",
                          col_types = cols(
-                            Group = col_character(),
+                            `Group` = col_character(),
                             `Litter Number` = col_character(),
                             `GD0 weight` = col_double(),
                             `GD18 weight` = col_double(),
@@ -75,4 +71,25 @@ litters_data3 = read_csv(file = "./data/FAS_litters.csv",
 litters_data4 = read_csv(file = "./data/FAS_litters.csv",
   col_types = "ccddiiii"
 )
+
+### changing specification for data pups
+pups_data2 = read_csv(file = "./data/FAS_pups.csv",
+                      col_types = "ciiiii"
+                      )
+```
+
+### insted of export file from xl into csv, use readxl function
+
+``` r
+mlb11_data_subset = read_excel(path = "./data/mlb11.xlsx",
+                        range = "A1:D7"
+                      )
+### export csv data 
+write_csv(mlb11_data_subset, path = "./data/mlb11.xlsx")
+```
+
+## read in SAS
+
+``` r
+pulse_data = read_sas("./data/public_pulse_data.sas7bdat")
 ```
